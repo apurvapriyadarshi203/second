@@ -1,0 +1,28 @@
+db.BOOKS.aggregate([
+   {
+     $lookup:
+       {
+         from: "new",
+         localField: "bookid",
+         foreignField: "bookid",
+         as: "new_docs"
+       }
+  }
+])
+
+----------------------------------------
+db.BOOKS.aggregate([
+   {
+      $match: {"bookid":103}
+   },
+   {
+     $lookup:
+       {
+         from: "new",
+         localField: "bookid",
+         foreignField: "bookid",
+         as: "new_docs"
+       }
+   }
+   
+])
